@@ -1,6 +1,15 @@
 class LoginController < ApplicationController
   skip_before_filter :verify_authenticity_token  
 
+  def json_signup
+  end
+
+  def json_login
+  end
+
+  def clearData
+    User.delete_all()
+  end
 
   def index
     @user = User.new

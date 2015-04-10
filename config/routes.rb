@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'login#index'
   post 'login/signup' => 'login#create'
+  post 'signup' => 'login#json_signup'
+  post 'login' => 'login#json_login'
+  post 'clearData' => 'login#clearData'
   get 'login/welcome' => 'login#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
