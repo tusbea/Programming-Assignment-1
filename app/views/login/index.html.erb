@@ -29,21 +29,3 @@
   <%= submit_tag 'Login', :name => 'login' %>
   <%= submit_tag 'Add User', :name => 'add' %>
 <% end %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Title</th>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
- 
-  <% @users.each do |u| %>
-    <tr>
-      <td><%= u.id %></td>
-      <td><%= u.username %></td>
-      <td><%= u.password %></td>
-      <td><%= u.count %></td>
-    </tr>
-  <% end %>
-</table>
