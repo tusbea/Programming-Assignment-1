@@ -13,16 +13,16 @@
       </ul>
     </div>
   <% else %>
-    <p>Message Box</p>
+    <p>Please enter your credentials below</p>
   <% end %>
 
   <p>
-    <%= f.label :Username %><br>
+    <%= f.label 'Username: ' %>
     <%= f.text_field :username %>
   </p>
 
   <p>
-    <%= f.label :Password %><br>
+    <%= f.label 'Password: ' %>
     <%= f.password_field :password %>
   </p>
 
@@ -30,3 +30,17 @@
   <%= submit_tag 'Login', :name => 'login' %>
   <%= submit_tag 'Add User', :name => 'add' %>
 <% end %>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Password</th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.password%></td>
+    </tr>
+  <% end %>
+</table>
