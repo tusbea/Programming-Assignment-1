@@ -2,6 +2,11 @@ class LoginController < ApplicationController
   skip_before_filter :verify_authenticity_token  
 
   def json_signup
+    @user = User.new(params.permit(:username, :password))
+
+
+    @user.save
+
   end
 
   def json_login
@@ -17,7 +22,7 @@ class LoginController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:username, :password))
+    @user = User.new(user_params)
 
     if params[:login]
       u = User.find_by username: @user.username, password: @user.password
@@ -48,6 +53,11 @@ class LoginController < ApplicationController
     @user = User.find(params[:user])
     @user.count += 1
     @user.save
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:username, :password)
   end
 
 end
