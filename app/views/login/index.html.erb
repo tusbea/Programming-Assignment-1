@@ -1,5 +1,6 @@
 
 <%= form_for :user, url: login_create_path do |f| %>
+  <div style="border:1px solid; padding:10px; max-width:300px; " >
   <% if @user.errors.any? %>
     <p>
         <% @user.errors.messages.each do |attr, msg| %>
@@ -13,6 +14,7 @@
   <% else %>
     <p>Please enter your credentials below</p>
   <% end %>
+  </div>
 
   <p>
     <%= f.label 'Username: ' %>

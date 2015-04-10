@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
       maximum: 20,
       too_long: "The user name should be 5~20 characters long. Please try again.", 
       too_short: "The user name should be 5~20 characters long. Please try again." 
-    },
-    uniqueness: { message: "This user name already exists. Please try again." }
+    }
   
   validates :password, 
     length: { 
@@ -15,4 +14,8 @@ class User < ActiveRecord::Base
       too_long: "The password should be 8~20 characters long. Please try again.",
       too_short: "The password should be 8~20 characters long. Please try again."
     }
+
+  validates :username,
+    uniqueness: { message: "This user name already exists. Please try again." }
+
 end
