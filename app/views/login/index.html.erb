@@ -1,6 +1,21 @@
-<h1>Login Page</h1>
 
 <%= form_for :user, url: login_create_path do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <p>Message Box</p>
+  <% end %>
+
   <p>
     <%= f.label :Username %><br>
     <%= f.text_field :username %>
