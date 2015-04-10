@@ -8,12 +8,13 @@ class LoginController < ApplicationController
     @user = User.new(params.require(:user).permit(:username, :password))
 
     if params[:login]
-      render 'welcome'
+      redirect_to login_welcome_path
     elsif params[:add]
       if !@user.save
+        @users = User.all
         render 'index'
       else
-        render 'welcome'
+        redirect_to login_welcome_path
       end
     end
   end

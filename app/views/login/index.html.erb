@@ -1,17 +1,15 @@
 
 <%= form_for :user, url: login_create_path do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+    <p>
+        <% @user.errors.messages.each do |attr, msg| %>
+          <% msg.each do |val| %>
+            <%= val %>
+            <% break %>
+          <% end %>
+          <% break %>
         <% end %>
-      </ul>
-    </div>
+    </p>
   <% else %>
     <p>Please enter your credentials below</p>
   <% end %>
