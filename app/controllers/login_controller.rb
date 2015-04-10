@@ -13,6 +13,7 @@ class LoginController < ApplicationController
         redirect_to :controller => 'login', :action => 'welcome', :user => u.id
       else
         @users = User.all
+        @user.errors.add(:username, "Invalid username and password combination. Please try again.")
         render 'index'
       end
     elsif params[:add]
