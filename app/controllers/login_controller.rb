@@ -1,4 +1,7 @@
 class LoginController < ApplicationController
+  skip_before_filter :verify_authenticity_token  
+
+
   def index
     @user = User.new
     @users = User.all
@@ -9,6 +12,8 @@ class LoginController < ApplicationController
 
     if params[:login]
       u = User.find_by username: @user.username, password: @user.password
+
+      # user exists in db
       if !u.nil?
         redirect_to :controller => 'login', :action => 'welcome', :user => u.id
       else
@@ -16,7 +21,11 @@ class LoginController < ApplicationController
         @user.errors.add(:username, "Invalid username and password combination. Please try again.")
         render 'index'
       end
+
+
     elsif params[:add]
+
+      # error occured when saving user to db
       if !@user.save
         @users = User.all
         render 'index'
