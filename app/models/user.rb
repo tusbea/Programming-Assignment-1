@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  after_initialize :init
+
+  def init
+    self.count ||= 0
+  end
+
   validates :username, 
     length: { 
       minimum: 5,

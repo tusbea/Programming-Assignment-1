@@ -14,12 +14,15 @@ class LoginController < ApplicationController
         @users = User.all
         render 'index'
       else
-        redirect_to login_welcome_path
+        redirect_to :controller => 'login', :action => 'welcome', :user => @user
       end
     end
   end
 
   def welcome
+    @user = User.find(params[:user])
+    @user.count += 1
+    @user.save
   end
 
 end
