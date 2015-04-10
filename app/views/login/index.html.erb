@@ -1,0 +1,17 @@
+<h1>Login Page</h1>
+
+<%= form_for :user, url: login_create_path do |f| %>
+  <p>
+    <%= f.label :Username %><br>
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :Password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+  <%= submit_tag 'Login', :name => 'login' %>
+  <%= submit_tag 'Add User', :name => 'add' %>
+<% end %>
